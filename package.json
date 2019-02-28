@@ -1,0 +1,23 @@
+{
+  "name": "@orionmd/dcmjs-utils",
+  "version": "1.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Jason Hostetter MD",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmhmd/dcmjs-utils.git"
+  },
+  "homepage": "https://github.com/jmhmd/dcmjs-utils#readme",
+  "dependencies": {
+    "@orionmd/dcmjs": "^0.3.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "jest": "^24.1.0"
+  }
+}

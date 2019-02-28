@@ -1,0 +1,7 @@
+*.dcm
+.eslintrc.json
+.vscode
+dcm/
+examples/
+test/
+.DS_Store
