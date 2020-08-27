@@ -38,16 +38,14 @@ function checkPattern(filename, pattern) {
 }
 
 async function dump(options = {}) {
-  const {
-    path: dumpPath, pattern, ignoreErrors, naturalize = true,
-  } = options;
+  const { path: dumpPath, pattern, ignoreErrors, naturalize = true, untilTag } = options;
 
   // check if path is a directory
   const fStat = await stat(dumpPath);
   if (fStat.isDirectory()) {
     let filenames = await readdir(dumpPath);
     if (pattern) {
-      filenames = filenames.filter(filename => checkPattern(filename, pattern));
+      filenames = filenames.filter((filename) => checkPattern(filename, pattern));
     }
     return Promise.all(
       filenames.map(async (filename) => {
@@ -56,7 +54,7 @@ async function dump(options = {}) {
           return {
             filename,
             filePath,
-            dataset: await getFileDataset(filePath, { ignoreErrors, naturalize }),
+            dataset: await getFileDataset(filePath, { ignoreErrors, naturalize, untilTag }),
           };
         } catch (err) {
           return {
@@ -65,7 +63,7 @@ async function dump(options = {}) {
             error: err.message || err,
           };
         }
-      }),
+      })
     );
   }
   return getFileDataset(dumpPath, { ignoreErrors, naturalize });

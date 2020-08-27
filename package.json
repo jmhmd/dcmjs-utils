@@ -10,7 +10,8 @@
   },
   "homepage": "https://github.com/jmhmd/dcmjs-utils#readme",
   "dependencies": {
-    "@orionmd/dcmjs": "^0.3.6"
+    "@orionmd/dcmjs": "^0.11.0",
+    "dcmjs": "^0.16.2"
   },
   "devDependencies": {
     "eslint": "^5.14.1",
