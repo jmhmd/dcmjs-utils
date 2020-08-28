@@ -18,6 +18,7 @@ async function fix(options = {}) {
   const fileArrayBuffer = bufferToArrayBuffer(fileBuffer);
   const dicomData = dcmjs.data.DicomMessage.readFile(fileArrayBuffer, {
     ignoreErrors: true,
+    stopAfterTag: '7FE00010',
   });
   const dataset = dcmjs.data.DicomMetaDictionary.naturalizeDataset(dicomData.dict);
   // eslint-disable-next-line no-underscore-dangle
