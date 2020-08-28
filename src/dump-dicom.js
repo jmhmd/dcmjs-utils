@@ -12,10 +12,14 @@ const bufferToArrayBuffer = require('./util/buffer-to-arraybuffer');
 // const file = fs.readFile('./dcm/1.dcm');
 
 async function getFileDataset(filePath, options = {}) {
-  const { ignoreErrors, naturalize, untilTag } = options;
+  const { ignoreErrors, naturalize, untilTag, stopAfterTag } = options;
   const fileBuffer = await readFile(filePath);
   const fileArrayBuffer = bufferToArrayBuffer(fileBuffer);
-  const dicomData = dcmjs.data.DicomMessage.readFile(fileArrayBuffer, { ignoreErrors, untilTag });
+  const dicomData = dcmjs.data.DicomMessage.readFile(fileArrayBuffer, {
+    ignoreErrors,
+    untilTag,
+    stopAfterTag,
+  });
   let dataset = dicomData.dict;
   let { meta } = dicomData;
 
@@ -38,7 +42,14 @@ function checkPattern(filename, pattern) {
 }
 
 async function dump(options = {}) {
-  const { path: dumpPath, pattern, ignoreErrors, naturalize = true, untilTag } = options;
+  const {
+    path: dumpPath,
+    pattern,
+    ignoreErrors,
+    naturalize = true,
+    untilTag,
+    stopAfterTag,
+  } = options;
 
   // check if path is a directory
   const fStat = await stat(dumpPath);
@@ -54,7 +65,12 @@ async function dump(options = {}) {
           return {
             filename,
             filePath,
-            dataset: await getFileDataset(filePath, { ignoreErrors, naturalize, untilTag }),
+            dataset: await getFileDataset(filePath, {
+              ignoreErrors,
+              naturalize,
+              untilTag,
+              stopAfterTag,
+            }),
           };
         } catch (err) {
           return {
@@ -66,7 +82,7 @@ async function dump(options = {}) {
       })
     );
   }
-  return getFileDataset(dumpPath, { ignoreErrors, naturalize, untilTag });
+  return getFileDataset(dumpPath, { ignoreErrors, naturalize, untilTag, stopAfterTag });
 }
 
 module.exports = dump;
