@@ -12,10 +12,10 @@ const bufferToArrayBuffer = require('./util/buffer-to-arraybuffer');
 // const file = fs.readFile('./dcm/1.dcm');
 
 async function getFileDataset(filePath, options = {}) {
-  const { ignoreErrors, naturalize } = options;
+  const { ignoreErrors, naturalize, untilTag } = options;
   const fileBuffer = await readFile(filePath);
   const fileArrayBuffer = bufferToArrayBuffer(fileBuffer);
-  const dicomData = dcmjs.data.DicomMessage.readFile(fileArrayBuffer, { ignoreErrors });
+  const dicomData = dcmjs.data.DicomMessage.readFile(fileArrayBuffer, { ignoreErrors, untilTag });
   let dataset = dicomData.dict;
   let { meta } = dicomData;
 
@@ -66,7 +66,7 @@ async function dump(options = {}) {
       })
     );
   }
-  return getFileDataset(dumpPath, { ignoreErrors, naturalize });
+  return getFileDataset(dumpPath, { ignoreErrors, naturalize, untilTag });
 }
 
 module.exports = dump;
