@@ -146,10 +146,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@orionmd/dcmjs@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@orionmd/dcmjs/-/dcmjs-0.17.0.tgz#840cf29926f2a734613d343919a0e43ea5a1ab29"
-  integrity sha512-Tm0gWg7RbCL7Xfx7TT362EiAGGZ5SwJVB4F/NnYpg/hh5TgUyvVN5bMrJQwUHaShZ1Dwjm/tHV54K045sgXqTQ==
+"@orionmd/dcmjs@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@orionmd/dcmjs/-/dcmjs-0.18.0.tgz#42b8cee04adbe6631892a4202f4d977eea0bd153"
+  integrity sha512-4qv62aAeH6JSgeVVq9y0fXWMaCRUPhu1AE/lYk4cEGVIZg6z7gPYTKUyneu2enFUmarGZCaxj6yfNcGkfmLbcw==
   dependencies:
     "@babel/polyfill" "^7.8.3"
     "@babel/runtime" "^7.8.4"
