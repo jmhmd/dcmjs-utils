@@ -10,6 +10,7 @@ const util = require('util');
 const dcmjs = require('@orionmd/dcmjs');
 
 const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
 async function fix(options = {}) {
   const { path: filePath, outputPath } = options;
@@ -25,7 +26,7 @@ async function fix(options = {}) {
   // console.log(dataset.FrameIncrementPointer);
   // const buffer = dcmjs.data.datasetToBuffer(dataset);
   // fs.writeFileSync(outputPath, buffer);
-  fs.writeFileSync(outputPath, Buffer.from(dicomData.write()));
+  return writeFile(outputPath, Buffer.from(dicomData.write({ fragmentMultiframe: false })));
 }
 
 module.exports = fix;
