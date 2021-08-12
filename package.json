@@ -3,7 +3,7 @@
   "version": "1.2.4",
   "main": "index.js",
   "license": "MIT",
-  "author": "Jason Hostetter MD",
+  "author": "Jason Hostetter, MD",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmhmd/dcmjs-utils.git"
